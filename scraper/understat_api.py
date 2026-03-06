@@ -5,24 +5,6 @@ import pandas as pd
 import time
 
 
-#client = understatapi.UnderstatClient()
-
-#league_data = client.league(league='EPL').get_match_data(season='2024')
-#shot_data = client.match(match='26602').get_shot_data()
-
-# See all keys available in match data
-
-#print("Match data keys:", league_data[0].keys())
-#print(json.dumps(league_data[0], indent=2))
-
-# See all keys available in shot data
-
-#print("Type:", type(shot_data))
-#print("Shot data:", shot_data)
-
-#print("Shot data keys:", shot_data[0].keys())
-#print(json.dumps(shot_data[0], indent=2))
-
 client = understatapi.UnderstatClient()
 
 # Step 1: Get all match IDs for the season
