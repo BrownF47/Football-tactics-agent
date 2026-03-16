@@ -35,7 +35,7 @@ colors = {
 
 for result, group in shots_df.groupby('result'):
     plt.scatter(
-        group['X'] * 100 +0.5 ,  # Understat uses 0-1, mplsoccer expects 0-100
+        group['X'] * 100 + 0.5,  
         group['Y'] * 70,
         color=colors.get(str(result), 'gray'),
         s=1,
@@ -51,3 +51,21 @@ plt.savefig('data/shot_map.png', dpi=150, bbox_inches='tight')
 plt.show()
 print("Shot map saved!")
 
+shots_df = shots_df[shots_df['X']>0.5]
+for result, group in shots_df.groupby('result'):
+    plt.scatter(
+        group['X'] * 100 + 0.5 - 50,  
+        group['Y'] * 70,
+        color=colors.get(str(result), 'gray'),
+        s=1,
+        alpha=0.5,
+        label=result
+    )
+
+plt.legend(loc='lower left')
+plt.title('EPL 2024/25 Shot Map')
+plot_half_pitch()
+
+plt.savefig('data/shot_map_half_pitch.png', dpi=150, bbox_inches='tight')
+plt.show()
+print("Shot map saved!")
