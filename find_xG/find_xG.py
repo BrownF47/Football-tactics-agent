@@ -8,6 +8,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import roc_auc_score
 import sys
 import os
+import joblib
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from plotting_functions.plot_pitch import plot_half_pitch
 
@@ -50,6 +51,8 @@ y_prob = model.predict_proba(x_test)[:,1]
 auc = roc_auc_score(y_test, y_prob)
 print(auc)
 
+joblib.dump(model, 'find_xG/xg_model.pkl')
+print("xG model saved!")
 
 # Visualise the xG # 
 x = np.linspace(0,1,100)   # only attacking half
